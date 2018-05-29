@@ -4,8 +4,6 @@ Created on Mon May 28 11:02:28 2018
 
 @author: liuboming
 """
-
-
 import requests, csv
 
 def weatherNOAA(endpoints):
@@ -19,7 +17,6 @@ def weatherNOAA(endpoints):
 #write into csv
     outputFile = open("weather.csv","w")
     outputWriter = csv.writer(outputFile)
-
 # obtain keys in the dict
     keys=list(data['results'][0].keys()) 
 # write keys in the first line
@@ -32,7 +29,6 @@ def weatherNOAA(endpoints):
         outputWriter.writerow(row_array)
 
 def _tests():
-	
     # fetch the IDs of all the states 
 	weatherNOAA('locations?locationcategoryid=ST&limit=52')
 
