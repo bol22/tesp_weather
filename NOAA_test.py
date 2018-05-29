@@ -4,7 +4,7 @@ Created on Mon May 28 11:02:28 2018
 @author: liuboming
 """
 myToken='GlQbxfsaOUPCWrtJylfRwRuXwAZJnyVK'
-myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/datasets?datacategoryid=TEMP'
+myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&datatypeid=TOBS&datacatogoryid=TEMP&stationid=COOP:010008&units=standard&startdate=2010-05-01&enddate=2010-05-15'
 
 head={'token':myToken}
 import requests, json, csv
@@ -12,7 +12,7 @@ import requests, json, csv
 r=requests.get(url=myUrl, headers=head)
 data=r.json()
 
-outputFile = open("Datasetsfottemp.csv","w")
+outputFile = open("TOBS_half_month.csv","w")
 outputWriter = csv.writer(outputFile)
 
 # obtain keys in the dict
@@ -25,5 +25,5 @@ for location in data['results']:
     for attribute in location:
         row_array.append(location[attribute])
     outputWriter.writerow(row_array)
-#outputFile.close()
+outputFile.close()
         

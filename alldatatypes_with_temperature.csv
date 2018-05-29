@@ -1,0 +1,60 @@
+mindate,maxdate,name,datacoverage,id
+1763-01-01,2018-04-01,Cooling Degree Days Season to Date,1,CDSD
+1863-05-04,2018-03-03,Number of days included in the multiday minimum temperature (MDTN),1,DATN
+1863-05-04,2018-03-02,Number of days included in the multiday maximum temperature (MDTX),1,DATX
+2010-01-01,2010-12-31,Long-term averages of daily diurnal temperature range,1,DLY-DUTR-NORMAL
+2010-01-01,2010-12-31,Long-term standard deviations of daily diurnal temperature range,1,DLY-DUTR-STDDEV
+2010-01-01,2010-12-31,Long-term averages of daily average temperature,1,DLY-TAVG-NORMAL
+2010-01-01,2010-12-31,Long-term standard deviations of daily average temperature,1,DLY-TAVG-STDDEV
+2010-01-01,2010-12-31,Long-term averages of daily maximum temperature,1,DLY-TMAX-NORMAL
+2010-01-01,2010-12-31,Long-term standard deviations of daily maximum temperature,1,DLY-TMAX-STDDEV
+2010-01-01,2010-12-31,Long-term averages of daily minimum temperature,1,DLY-TMIN-NORMAL
+2010-01-01,2010-12-31,Long-term standard deviations of daily minimum temperature,1,DLY-TMIN-STDDEV
+1763-01-01,2018-04-01,Extreme minimum temperature for the period.,1,EMNT
+1763-01-01,2018-04-01,Extreme maximum temperature for the period.,1,EMXT
+1763-07-01,2018-04-01,Heating Degree Days Season to Date,1,HDSD
+2010-01-01,2010-12-31,Dew point 10th percentile,1,HLY-DEWP-10PCTL
+2010-01-01,2010-12-31,Dew point 90th percentile,1,HLY-DEWP-90PCTL
+2010-01-01,2010-12-31,Dew point mean,1,HLY-DEWP-NORMAL
+2010-01-01,2010-12-31,Heat index mean,1,HLY-HIDX-NORMAL
+2010-01-01,2010-12-31,Temperature 10th percentile,1,HLY-TEMP-10PCTL
+2010-01-01,2010-12-31,Temperature 90th percentile,1,HLY-TEMP-90PCTL
+2010-01-01,2010-12-31,Temperature mean,1,HLY-TEMP-NORMAL
+2010-01-01,2010-12-31,Wind chill mean,1,HLY-WCHL-NORMAL
+1763-01-01,2018-05-27,Highest minimum temperature,HTMN
+1763-01-01,2018-05-27,Highest maximum temperature,HTMX
+1763-01-01,2018-05-27,Lowest minimum temperature,LTMN
+1763-01-01,2018-05-27,Lowest maximum temperature,LTMX
+1863-05-04,2018-03-03,Multiday minimum temperature (use with DATN),1,MDTN
+1863-05-04,2018-03-02,Multiday maximum temperature (use with DATX),1,MDTX
+2010-01-01,2010-12-01,Long-term averages of monthly diurnal temperature range,1,MLY-DUTR-NORMAL
+2010-01-01,2010-12-01,Long-term standard deviations of monthly diurnal temperature range,1,MLY-DUTR-STDDEV
+2010-01-01,2010-12-01,Long-term averages of monthly average temperature,1,MLY-TAVG-NORMAL
+2010-01-01,2010-12-01,Long-term standard deviations of monthly average temperature,1,MLY-TAVG-STDDEV
+2010-01-01,2010-12-01,Long-term average number of days per month where tmax is greater than or equal to 40F,1,MLY-TMAX-AVGNDS-GRTH040
+2010-01-01,2010-12-01,Long-term average number of days per month where tmax is greater than or equal to 50F,1,MLY-TMAX-AVGNDS-GRTH050
+2010-01-01,2010-12-01,Long-term average number of days per month where tmax is greater than or equal to 60F,1,MLY-TMAX-AVGNDS-GRTH060
+2010-01-01,2010-12-01,Long-term average number of days per month where tmax is greater than or equal to 70F,1,MLY-TMAX-AVGNDS-GRTH070
+2010-01-01,2010-12-01,Long-term average number of days per month where tmax is greater than or equal to 80F,1,MLY-TMAX-AVGNDS-GRTH080
+2010-01-01,2010-12-01,Long-term average number of days per month where tmax is greater than or equal to 90F,1,MLY-TMAX-AVGNDS-GRTH090
+2010-01-01,2010-12-01,Long-term average number of days per month where tmax is greater than or equal to 100F,1,MLY-TMAX-AVGNDS-GRTH100
+2010-01-01,2010-12-01,Long-term average number of days per month where tmax is less than or equal to 32F,1,MLY-TMAX-AVGNDS-LSTH032
+2010-01-01,2010-12-01,Long-term averages of monthly maximum temperature,1,MLY-TMAX-NORMAL
+2010-01-01,2010-12-01,Long-term standard deviations of monthly maximum temperature,1,MLY-TMAX-STDDEV
+2010-01-01,2010-12-01,Long-term average number of days per month where tmin is less than or equal to 0F,1,MLY-TMIN-AVGNDS-LSTH000
+2010-01-01,2010-12-01,Long-term average number of days per month where tmin is less than or equal to 10F,1,MLY-TMIN-AVGNDS-LSTH010
+2010-01-01,2010-12-01,Long-term average number of days per month where tmin is less than or equal to 20F,1,MLY-TMIN-AVGNDS-LSTH020
+2010-01-01,2010-12-01,Long-term average number of days per month where tmin is less than or equal to 32F,1,MLY-TMIN-AVGNDS-LSTH032
+2010-01-01,2010-12-01,Long-term average number of days per month where tmin is less than or equal to 40F,1,MLY-TMIN-AVGNDS-LSTH040
+2010-01-01,2010-12-01,Long-term average number of days per month where tmin is less than or equal to 50F,1,MLY-TMIN-AVGNDS-LSTH050
+2010-01-01,2010-12-01,Long-term average number of days per month where tmin is less than or equal to 60F,1,MLY-TMIN-AVGNDS-LSTH060
+2010-01-01,2010-12-01,Long-term average number of days per month where tmin is less than or equal to 70F,1,MLY-TMIN-AVGNDS-LSTH070
+2010-01-01,2010-12-01,Long-term averages of monthly minimum temperature,1,MLY-TMIN-NORMAL
+2010-01-01,2010-12-01,Long-term standard deviations of monthly minimum temperature,1,MLY-TMIN-STDDEV
+1763-01-01,2016-03-01,Monthly Mean minimum temperature,1,MMNT
+1763-01-01,2016-03-01,Monthly Mean maximum temperature,1,MMXT
+1763-01-01,2016-03-01,Monthly mean temperature,1,MNTM
+1763-01-01,2018-05-27,Average Temperature.,1,TAVG
+1763-01-01,2018-05-27,Maximum temperature,1,TMAX
+1763-01-01,2018-05-27,Minimum temperature,1,TMIN
+1876-11-27,2018-05-27,Temperature at the time of observation,1,TOBS
