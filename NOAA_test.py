@@ -1,10 +1,14 @@
+"""
+Created on Mon May 28 11:02:28 2018
+
+@author: liuboming
+"""
+
 myToken='GlQbxfsaOUPCWrtJylfRwRuXwAZJnyVK'
 myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=PRECIP_15&stationid=COOP:010008&units=metric&startdate=2010-05-01&enddate=2010-08-31&limit=1000'
 
 head={'token':myToken}
-import requests
-import json
-import csv
+import requests, json, csv
 
 r=requests.get(url=myUrl, headers=head)
 data=r.json()
@@ -23,6 +27,5 @@ for location in data['results']:
     for attribute in location:
         row_array.append(location[attribute])
     outputWriter.writerow(row_array)
-
 #outputFile.close()
         

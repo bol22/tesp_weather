@@ -6,10 +6,7 @@ Created on Mon May 28 11:02:28 2018
 """
 
 
-import requests
-import json
-import csv
-import tempfile
+import requests, csv
 
 def weatherNOAA(endpoints):
 # base url and token
@@ -35,7 +32,8 @@ def weatherNOAA(endpoints):
         outputWriter.writerow(row_array)
 
 def _tests():
-	#tmpdir = tempfile.mkdtemp()
+	
+    # fetch the IDs of all the states 
 	weatherNOAA('locations?locationcategoryid=ST&limit=52')
 
 if __name__ == '__main__':
