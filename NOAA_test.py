@@ -7,7 +7,8 @@ import requests, json, csv
 
 myToken='GlQbxfsaOUPCWrtJylfRwRuXwAZJnyVK'
 #myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&stationid=COOP:010008&units=metric&startdate=2014-05-01&enddate=2014-05-10'
-myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/locations?datasetsid=NORMAL_HLY'
+# find the stationid which support datasetid=NORMAL_HLY
+myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/stations?datasetid=NORMAL_HLY&limit=1000'
 
 head={'token':myToken}
 
@@ -17,7 +18,7 @@ data=r.json()
 if data=={}:
     print('Wrong url, no data avaliable')
 else :
-    outputFile = open("location_hourly.csv","w")
+    outputFile = open("stations_support_hourly_data.csv","w")
     outputWriter = csv.writer(outputFile)
     # obtain keys in the dict
     keys=list(data['results'][0].keys()) 
