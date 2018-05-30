@@ -977,3 +977,25 @@ mindate,maxdate,name,datacoverage,id
 2010-01-01,2010-01-01,Long-term average number of days per spring where tmin is less than or equal to 70F,1,MAM-TMIN-AVGNDS-LSTH070
 2010-01-01,2010-01-01,Long-term averages of spring minimum temperature,1,MAM-TMIN-NORMAL
 1948-08-02,2010-08-16,Multiday evaporation total (use with DAEV),1,MDEV
+1832-05-11,2018-04-30,"Multiday precipitation total (use with DAPR and DWPR, if available)",1,MDPR
+1859-12-29,2018-01-21,Multiday snowfall total ,1,MDSF
+1863-05-04,2018-03-03,Multiday minimum temperature (use with DATN),1,MDTN
+1863-05-04,2018-03-02,Multiday maximum temperature (use with DATX),1,MDTX
+1935-09-23,2010-06-21,Multiday wind movement,1,MDWM
+2010-01-01,2010-12-01,Long-term averages of monthly cooling degree days with base 45F,1,MLY-CLDD-BASE45
+2010-01-01,2010-12-01,Long-term averages of monthly cooling degree days with base 50F,1,MLY-CLDD-BASE50
+2010-01-01,2010-12-01,Long-term averages of monthly cooling degree days with base 55F,1,MLY-CLDD-BASE55
+2010-01-01,2010-12-01,Long-term averages of monthly cooling degree days with base 57F,1,MLY-CLDD-BASE57
+2010-01-01,2010-12-01,Long-term averages of monthly cooling degree days with base 60F,1,MLY-CLDD-BASE60
+2010-01-01,2010-12-01,Long-term averages of monthly cooling degree days with base 70F,1,MLY-CLDD-BASE70
+2010-01-01,2010-12-01,Long-term averages of monthly cooling degree days with base 72F,1,MLY-CLDD-BASE72
+2010-01-01,2010-12-01,Long-term averages of monthly cooling degree days with base 65F,1,MLY-CLDD-NORMAL
+2010-01-01,2010-12-01,Long-term averages of monthly diurnal temperature range,1,MLY-DUTR-NORMAL
+2010-01-01,2010-12-01,Long-term standard deviations of monthly diurnal temperature range,1,MLY-DUTR-STDDEV
+2010-01-01,2010-12-01,Long-term averages of monthly growing degree days with base 40F,1,MLY-GRDD-BASE40
+2010-01-01,2010-12-01,Long-term averages of monthly growing degree days with base 45F,1,MLY-GRDD-BASE45
+2010-01-01,2010-12-01,Long-term averages of monthly growing degree days with base 50F,1,MLY-GRDD-BASE50
+2010-01-01,2010-12-01,Long-term averages of monthly growing degree days with base 55F,1,MLY-GRDD-BASE55
+2010-01-01,2010-12-01,Long-term averages of monthly growing degree days with base 57F,1,MLY-GRDD-BASE57
+2010-01-01,2010-12-01,Long-term averages of monthly growing degree days with base 60F,1,MLY-GRDD-BASE60
+2010-01-01,2010-12-01,Long-term averages of monthly growing degree days with base 65F,1,MLY-GRDD-BASE65

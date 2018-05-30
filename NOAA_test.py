@@ -16,7 +16,6 @@ myToken='GlQbxfsaOUPCWrtJylfRwRuXwAZJnyVK'
 myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/datatypes?limit=1000'
 
 head={'token':myToken}
-
 r=requests.get(url=myUrl, headers=head)
 data=r.json()
 
