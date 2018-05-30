@@ -16,7 +16,7 @@ myToken='GlQbxfsaOUPCWrtJylfRwRuXwAZJnyVK'
 # myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/datatypes?limit=1000'
 
 # an example url to fetch hourly temperature at a given station (seattle airport)
-myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-TEMP-NORMAL&stationid=GHCND:USW00024233&unit=metric&startdate=2010-05-01&enddate=2010-05-31&limit=1000'
+myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-TEMP-NORMAL&stationid=GHCND:USW00024233&startdate=2010-05-01&enddate=2010-05-31&limit=1000'
 
 head={'token':myToken}
 r=requests.get(url=myUrl, headers=head)
