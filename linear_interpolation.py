@@ -12,11 +12,8 @@ Created on Wed May 30 15:52:51 2018
 #for row in reader:
 #    list1.append(row)
 import pandas as pd
-#import numpy as np
 import csv
-#from matplotlib.dates import strpdate2num
 from datetime import datetime
-
 
 with open('temperature_mean_seattleairport_sim.csv') as f:
      reader = csv.reader(f)
@@ -26,15 +23,43 @@ with open('temperature_mean_seattleairport_sim.csv') as f:
          #skip frist row
          if reader.line_num == 1:
              continue
+         #read the timestamp after transfer the data type
          timestamp.append(datetime.strptime(row[0],"%Y-%m-%d %H:%M:%S"))
-         temperature.append(row[1])
-
-         
-         
+         temperature.append(row[1])        
+# Creat a timeseries data      
 ts = pd.Series(temperature, index=timestamp)
-tss=ts.resample('300s').interpolate()
-tss=tss.astype(float)
-out=tss.interpolate()
+# upsample to every 5 minutes
+s=ts.resample('300s').interpolate()
+# won't work without transfering to float
+s=s.astype(float)
+s=s.interpolate()
+# pandas series to csv
+s.to_csv('5min_temp.csv')
+
+
+## other option transfer from float to 
+## s is the 5 minuts pd.series data
+## obtain the datetime as a string and write into a new csv file
+#dt=s.index.tolist()
+#dtstring=[]
+#for k in dt:
+#    dtstring.append(k.strftime("%Y-%m-%d %H:%M:%S"))
+#
+#values=s.tolist()
+#dt_values=dict(zip(dtstring,values))
+#
+#
+#with open('dict.csv', 'w',newline='') as csv_file:
+#    writer = csv.writer(csv_file)
+#    for key, value in dt_values.items():
+#        writer.writerow([key, value])
+##for x in dt_values:
+##    row_array=[]
+##    for n in x:
+##        row_array.append(x[n])
+##    newFile.writerow(row_array)
+
+
 
 
 
