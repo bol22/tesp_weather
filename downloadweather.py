@@ -29,6 +29,8 @@ def downloadweather_NOAA(stationid, startdate, enddate):
     if data1=={} or data2=={}:
         print('no data avaliable for one of the url')
     else:
+        
+        
         outputFile_1 = open("temperature_mean__sim.csv","w",newline='')
         outputWriter_1 = csv.writer(outputFile_1)
         keys=['time','value'] 
@@ -41,6 +43,8 @@ def downloadweather_NOAA(stationid, startdate, enddate):
             row_arrayt.append(timestampfixed)
             row_arrayt.append(dicts['value'])
             outputWriter_1.writerow(row_arrayt)
+        
+       
         
         outputFile_2 = open("windspeed_mean__sim.csv","w",newline='')
         outputWriter_2 = csv.writer(outputFile_2)
@@ -55,6 +59,8 @@ def downloadweather_NOAA(stationid, startdate, enddate):
             row_arrayw.append(dicts['value'])
             outputWriter_2.writerow(row_arrayw)
     # linear interpolation
+    
+    
     with open("temperature_mean__sim.csv") as f1:
          reader_1 = csv.reader(f1)
          timestamp=[]
@@ -67,6 +73,8 @@ def downloadweather_NOAA(stationid, startdate, enddate):
              timestamp.append(datetime.strptime(row[0],"%Y-%m-%d %H:%M:%S"))
              temperature.append(row[1])        
     f1.close()
+    
+    
     with open("windspeed_mean__sim.csv") as f2:
          reader_2 = csv.reader(f2)
          #timestamp=[]
@@ -80,6 +88,12 @@ def downloadweather_NOAA(stationid, startdate, enddate):
              windspeed.append(row[1])     
     
     f2.close()
+    
+    print(timestamp)
+    print(temperature)
+    print(windspeed)
+
+
     # Creat a timeseries data      
     dti=pd.to_datetime(timestamp)
     ts1 = pd.Series(temperature, index=dti)
@@ -100,7 +114,7 @@ def downloadweather_NOAA(stationid, startdate, enddate):
 
 def _tests():
     # fetch the IDs of all the states 
-	downloadweather_NOAA('GHCND:USW00024233','2010-05-01','2010-05-04')
+	downloadweather_NOAA('GHCND:USW00024233','2010-05-01','2010-06-01')
 
 if __name__ == '__main__':
 	_tests()
