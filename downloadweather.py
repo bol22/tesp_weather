@@ -55,20 +55,20 @@ def downloadweather_NOAA(stationid, startdate, enddate):
             row_arrayw.append(dicts['value'])
             outputWriter_2.writerow(row_arrayw)
     # linear interpolation
-    with open("temperature_mean__sim.csv") as f:
-         reader_1 = csv.reader(f)
-         timestamp_1=[]
+    with open("temperature_mean__sim.csv") as f1:
+         reader_1 = csv.reader(f1)
+         timestamp=[]
          temperature=[]
          for row in reader_1:
              #skip frist row
              if reader_1.line_num == 1:
                  continue
              #read the timestamp after transfer the data type
-             timestamp_1.append(datetime.strptime(row[0],"%Y-%m-%d %H:%M:%S"))
+             timestamp.append(datetime.strptime(row[0],"%Y-%m-%d %H:%M:%S"))
              temperature.append(row[1])        
-    
-    with open("windspeed_mean__sim.csv") as f:
-         reader_2 = csv.reader(f)
+    f1.close()
+    with open("windspeed_mean__sim.csv") as f2:
+         reader_2 = csv.reader(f2)
          #timestamp=[]
          windspeed=[]
          for row in reader_2:
@@ -79,11 +79,11 @@ def downloadweather_NOAA(stationid, startdate, enddate):
              #timestamp.append(datetime.strptime(row[0],"%Y-%m-%d %H:%M:%S"))
              windspeed.append(row[1])     
     
-    
+    f2.close()
     # Creat a timeseries data      
-    
-    ts1 = pd.Series(temperature, index=timestamp_1)
-    ts2 = pd.Series(windspeed, index=timestamp_1)
+    dti=pd.to_datetime(timestamp)
+    ts1 = pd.Series(temperature, index=dti)
+    ts2 = pd.Series(windspeed, index=dti)
     # upsample to every 5 minutes
     s1=ts1.resample('300s').interpolate()
     s2=ts2.resample('300s').interpolate()
@@ -95,11 +95,12 @@ def downloadweather_NOAA(stationid, startdate, enddate):
     dt=pd.DataFrame(data={'temperature':list(s1.values), 'windspeed':list(s2.values)}, index=s1.index)
     # pandas series to csv
     dt.to_csv('5min_temp_wind.csv')
+    print(temperature)
     print('weather data in csv')
 
 def _tests():
     # fetch the IDs of all the states 
-	downloadweather_NOAA('GHCND:USW00024233','2010-05-01','2010-06-01')
+	downloadweather_NOAA('GHCND:USW00024233','2010-05-01','2010-05-04')
 
 if __name__ == '__main__':
 	_tests()

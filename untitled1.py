@@ -36,4 +36,3 @@ else :
             row_arrayt.append(timestampfixed)
             row_arrayt.append(dicts['value'])
             outputWriter_1.writerow(row_arrayt)
-        

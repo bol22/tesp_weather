@@ -75,9 +75,9 @@ with open("windspeed_mean__sim.csv") as f:
 
 
 # Creat a timeseries data      
-
-ts1 = pd.Series(temperature, index=timestamp)
-ts2 = pd.Series(windspeed, index=timestamp)
+dti=pd.to_datetime(timestamp)
+ts1 = pd.Series(temperature, index=dti)
+ts2 = pd.Series(windspeed, index=dti)
 # upsample to every 5 minutes
 s1=ts1.resample('300s').interpolate()
 s2=ts2.resample('300s').interpolate()
