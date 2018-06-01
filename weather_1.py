@@ -57,7 +57,11 @@ with open("temperature_mean__sim.csv") as f:
          #skip frist row
          if reader.line_num == 1:
              continue
+<<<<<<< HEAD
          #read the timestamp once after transfer the data type
+=======
+         #read the timestamp after transfer the data type
+>>>>>>> 1ae82b901047e851f4cb572fe52be19c9f020147
          timestamp.append(datetime.strptime(row[0],"%Y-%m-%d %H:%M:%S"))
          temperature.append(row[1])        
 
@@ -70,13 +74,18 @@ with open("windspeed_mean__sim.csv") as f:
          if reader.line_num == 1:
              continue
          #read the timestamp after transfer the data type
+<<<<<<< HEAD
          #timestamp.append(datetime.strptime(row[0],"%Y-%m-%d %H:%M:%S"))
+=======
+#         timestamp.append(datetime.strptime(row[0],"%Y-%m-%d %H:%M:%S"))
+>>>>>>> 1ae82b901047e851f4cb572fe52be19c9f020147
          windspeed.append(row[1])     
 
 
 # Creat a timeseries data      
 
 
+<<<<<<< HEAD
 ts1 = pd.Series(temperature, index=timestamp)
 ts2 = pd.Series(windspeed, index=timestamp)
 # upsample to every 5 minutes
@@ -90,4 +99,14 @@ s2=s2.interpolate()
 dt=pd.DataFrame(data={'temperature':list(s1.values), 'windspeed':list(s2.values)}, index=s1.index)
 # pandas series to csv
 dt.to_csv('5min_temp_wind.csv')
+=======
+ts = pd.Series(temperature, windspeed, index=timestamp)
+# upsample to every 5 minutes
+s=ts.resample('300s').interpolate()
+# won't work without transfering to float
+s=s.astype(float)
+s=s.interpolate()
+# pandas series to csv
+s.to_csv('5min_temp_wind.csv')
+>>>>>>> 1ae82b901047e851f4cb572fe52be19c9f020147
 print('data in 5min_temp_wind.csv')
