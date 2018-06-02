@@ -44,6 +44,7 @@ def downloadweather_NOAA(stationid, startdate, enddate):
             row_arrayt.append(dicts['value'])
             outputWriter_1.writerow(row_arrayt)
         
+        outputFile_1.close()
        
         
         outputFile_2 = open("windspeed_mean__sim.csv","w",newline='')
@@ -58,6 +59,8 @@ def downloadweather_NOAA(stationid, startdate, enddate):
             row_arrayw.append(timestampfixed)
             row_arrayw.append(dicts['value'])
             outputWriter_2.writerow(row_arrayw)
+    
+        outputFile_2.close()
     # linear interpolation
     
     
@@ -86,14 +89,8 @@ def downloadweather_NOAA(stationid, startdate, enddate):
              #read the timestamp after transfer the data type
              #timestamp.append(datetime.strptime(row[0],"%Y-%m-%d %H:%M:%S"))
              windspeed.append(row[1])     
-    
     f2.close()
-    
-    print(timestamp)
-    print(temperature)
-    print(windspeed)
-
-
+   
     # Creat a timeseries data      
     dti=pd.to_datetime(timestamp)
     ts1 = pd.Series(temperature, index=dti)
@@ -109,7 +106,6 @@ def downloadweather_NOAA(stationid, startdate, enddate):
     dt=pd.DataFrame(data={'temperature':list(s1.values), 'windspeed':list(s2.values)}, index=s1.index)
     # pandas series to csv
     dt.to_csv('5min_temp_wind.csv')
-    print(temperature)
     print('weather data in csv')
 
 def _tests():
