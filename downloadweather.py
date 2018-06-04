@@ -17,6 +17,16 @@ from datetime import datetime
 def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
 # token is required and can be obtained from https://www.ncdc.noaa.gov/cdo-web/token
     myToken='GlQbxfsaOUPCWrtJylfRwRuXwAZJnyVK'
+    myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/stations?datasetid=NORMAL_HLY&limit=1000'
+    head={'token':myToken}
+    r=requests.get(url=myUrl, headers=head)
+    data=r.json()
+    list_station=[]
+    list_id=[]
+    for dicts in data['results']:        
+        list_station.append(dicts['name'])        
+        list_id.append(dicts['id'])
+        station_dict=dict(zip(list_id, list_station))    
     # an example url to fetch hourly temperature at a given station (seattle airport)
     myUrl_1='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-TEMP-NORMAL&stationid='+stationid+'&startdate='+startdate+'&enddate='+enddate+'&limit=1000'
     myUrl_2='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-WIND-AVGSPD&stationid='+stationid+'&startdate='+startdate+'&enddate='+enddate+'&limit=1000'
@@ -132,12 +142,12 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
     s3=s3.interpolate(method='quadratic')
     
     dt=pd.DataFrame(data={'temperature':list(s1.values), 'windspeed':list(s2.values), 'pressure':list(s3.values)}, index=s1.index)
-    # pandas series to csv
+    #write the DataFrame into a csv file
     dt.to_csv(outputFilename)
-    print('weather data in '+outputFilename)
+    print('weather data from '+station_dict[stationid]+' saved in '+outputFilename)
 
 def _tests():
-    # fetch the IDs of all the states 
+    # avaliable station id is in stationid_with_hourly_data.csv 
 	downloadweather_NOAA('GHCND:USW00024233','2010-05-01','2010-06-01','5min_temp_wind_pressure.csv')
 
 if __name__ == '__main__':
