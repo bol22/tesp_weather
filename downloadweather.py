@@ -13,7 +13,7 @@ Created on Thu May 31 18:06:01 2018
 import pandas as pd
 import csv, requests
 from datetime import datetime
-#station id :GHCND:USW00024233
+
 def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
 # token is required and can be obtained from https://www.ncdc.noaa.gov/cdo-web/token
     myToken='GlQbxfsaOUPCWrtJylfRwRuXwAZJnyVK'
@@ -27,7 +27,7 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
         list_station.append(dicts['name'])        
         list_id.append(dicts['id'])
         station_dict=dict(zip(list_id, list_station))    
-    # an example url to fetch hourly temperature at a given station (seattle airport)
+    #Urls to fetch hourly data at a given station
     myUrl_1='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-TEMP-NORMAL&stationid='+stationid+'&startdate='+startdate+'&enddate='+enddate+'&limit=1000'
     myUrl_2='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-WIND-AVGSPD&stationid='+stationid+'&startdate='+startdate+'&enddate='+enddate+'&limit=1000'
     myUrl_3='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-PRES-NORMAL&stationid='+stationid+'&startdate='+startdate+'&enddate='+enddate+'&limit=1000'
