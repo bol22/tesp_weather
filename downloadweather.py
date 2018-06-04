@@ -101,8 +101,8 @@ def downloadweather_NOAA(stationid, startdate, enddate):
     # won't work without transfering to float
     s1=s1.astype(float)
     s2=s2.astype(float)
-    s1=s1.interpolate()
-    s2=s2.interpolate()
+    s1=s1.interpolate(method='quadratic')
+    s2=s2.interpolate(method='quadratic')
     dt=pd.DataFrame(data={'temperature':list(s1.values), 'windspeed':list(s2.values)}, index=s1.index)
     # pandas series to csv
     dt.to_csv('5min_temp_wind.csv')
