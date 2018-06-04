@@ -9,7 +9,9 @@ import requests, json, csv
 # token is required and can be obtained from https://www.ncdc.noaa.gov/cdo-web/token
 myToken='GlQbxfsaOUPCWrtJylfRwRuXwAZJnyVK'
 # an example url to fetch hourly temperature at a given station (seattle airport)
-myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-TEMP-NORMAL&stationid=GHCND:USW00024233&startdate=2010-05-01&enddate=2010-06-01&limit=1000'
+#myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-TEMP-NORMAL&stationid=GHCND:USW00024233&startdate=2010-05-01&enddate=2010-06-01&limit=1000'
+# find the stationid which support datasetid=NORMAL_HLY
+myUrl='https://www.ncdc.noaa.gov/cdo-web/api/v2/stations?datasetid=NORMAL_HLY&limit=1000'
 
 head={'token':myToken}
 r=requests.get(url=myUrl, headers=head)
@@ -18,18 +20,15 @@ data=r.json()
 if data=={}:
     print('Wrong url, no data avaliable')
 else :
-    outputFile = open("temperature_mean_seattleairport_sim.csv","w",newline='')
+    outputFile = open("stationid_with_houly_data.csv","w",newline='')
     outputWriter = csv.writer(outputFile)
     keys=['time','value'] 
     outputWriter.writerow(keys)
-    for dicts in data['results']:
+    for location in data['results']:
         row_array=[]
-        #remove the 'T' between date and time
-        timestamp=dicts['date']
-        timestampfixed=timestamp.replace("T", " ")
-        row_array.append(timestampfixed)
-        row_array.append(dicts['value'])
+        for attribute in location:
+            row_array.append(location[attribute])
         outputWriter.writerow(row_array)
-#outputFile.close()
-
+    outputFile.close()
+        
 

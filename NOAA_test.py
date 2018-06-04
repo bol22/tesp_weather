@@ -3,7 +3,7 @@ Created on Mon May 28 11:02:28 2018
 
 @author: liuboming
 """
-import requests, json, csv
+import requests, csv
 
 myToken='GlQbxfsaOUPCWrtJylfRwRuXwAZJnyVK'
 # an example url to fetch hourly wind speed at a given station (seattle airport)
@@ -36,5 +36,5 @@ else :
         for attribute in location:
             row_array.append(location[attribute])
         outputWriter.writerow(row_array)
-#outputFile.close()
+    outputFile.close()
         
