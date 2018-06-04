@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed May 30 11:17:35 2018
+Created on Mon Jun  4 11:45:48 2018
 
 @author: liub725
 """
+
 import requests, json, csv
 
 # token is required and can be obtained from https://www.ncdc.noaa.gov/cdo-web/token
@@ -20,14 +21,9 @@ data=r.json()
 if data=={}:
     print('Wrong url, no data avaliable')
 else :
-    outputFile = open("stationid_with_houly_data.csv","w",newline='')
-    outputWriter = csv.writer(outputFile) 
-    outputWriter.writerow(list(data['results'][0].keys()))
-    for dict in data['results']:
-        row_array=[]
-        for attribute in dict:
-            row_array.append(dict[attribute])
-        outputWriter.writerow(row_array)
-    outputFile.close()
-        
-
+    list_station=[]
+    list_id=[]
+    for dicts in data['results']:        
+        list_station.append(dicts['name'])        
+        list_id.append(dicts['id'])
+    station_dict=dict(zip(list_id, list_station))
