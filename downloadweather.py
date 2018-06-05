@@ -10,6 +10,7 @@ Created on Thu May 31 18:06:01 2018
 
 @author: liuboming
 """
+# Scipy need to be install
 import pandas as pd
 import csv, requests
 from datetime import datetime
