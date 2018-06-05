@@ -29,9 +29,9 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
         list_id.append(dicts['id'])
         station_dict=dict(zip(list_id, list_station))    
     #Urls to fetch hourly data at a given station
-    myUrl_1='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-TEMP-NORMAL&stationid='+stationid+'&startdate='+startdate+'&enddate='+enddate+'&limit=1000'
-    myUrl_2='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-WIND-AVGSPD&stationid='+stationid+'&startdate='+startdate+'&enddate='+enddate+'&limit=1000'
-    myUrl_3='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-PRES-NORMAL&stationid='+stationid+'&startdate='+startdate+'&enddate='+enddate+'&limit=1000'
+    myUrl_1='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-TEMP-NORMAL&unit=standard&stationid='+stationid+'&startdate='+startdate+'&enddate='+enddate+'&limit=1000'
+    myUrl_2='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-WIND-AVGSPD&unit=standard&stationid='+stationid+'&startdate='+startdate+'&enddate='+enddate+'&limit=1000'
+    myUrl_3='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-PRES-NORMAL&unit=standard&stationid='+stationid+'&startdate='+startdate+'&enddate='+enddate+'&limit=1000'
     head={'token':myToken}
     r1=requests.get(url=myUrl_1, headers=head)
     r2=requests.get(url=myUrl_2, headers=head)
@@ -53,7 +53,7 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
             timestamp=dicts['date']
             timestampfixed=timestamp.replace("T", " ")
             row_arrayt.append(timestampfixed)
-            row_arrayt.append(dicts['value'])
+            row_arrayt.append(float(dicts['value'])/10)
             outputWriter_1.writerow(row_arrayt)       
         outputFile_1.close()
              
@@ -67,7 +67,7 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
             timestamp=dicts['date']
             timestampfixed=timestamp.replace("T", " ")
             row_arrayw.append(timestampfixed)
-            row_arrayw.append(dicts['value'])
+            row_arrayw.append(float(dicts['value'])/10)
             outputWriter_2.writerow(row_arrayw)   
         outputFile_2.close()
         
@@ -81,7 +81,7 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
             timestamp=dicts['date']
             timestampfixed=timestamp.replace("T", " ")
             row_arrayp.append(timestampfixed)
-            row_arrayp.append(dicts['value'])
+            row_arrayp.append(float(dicts['value'])*10)
             outputWriter_3.writerow(row_arrayp)   
         outputFile_3.close()
     # linear interpolation

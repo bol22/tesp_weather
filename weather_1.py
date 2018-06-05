@@ -11,8 +11,8 @@ from datetime import datetime
 # token is required and can be obtained from https://www.ncdc.noaa.gov/cdo-web/token
 myToken='GlQbxfsaOUPCWrtJylfRwRuXwAZJnyVK'
 # an example url to fetch hourly temperature at a given station (seattle airport)
-myUrl_1='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-TEMP-NORMAL&stationid=GHCND:USW00024233&startdate=2010-05-01&enddate=2010-06-01&limit=1000'
-myUrl_2='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-WIND-AVGSPD&stationid=GHCND:USW00024233&startdate=2010-05-01&enddate=2010-06-01&limit=1000'
+myUrl_1='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-TEMP-NORMAL&stationid=GHCND:USW00024233&startdate=2010-01-01&enddate=2010-02-01&limit=1000'
+myUrl_2='https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_HLY&datatypeid=HLY-WIND-AVGSPD&stationid=GHCND:USW00024233&startdate=2010-01-01&enddate=2010-02-01&limit=1000'
 head={'token':myToken}
 r1=requests.get(url=myUrl_1, headers=head)
 r2=requests.get(url=myUrl_2, headers=head)
@@ -33,6 +33,7 @@ else :
         row_arrayt.append(timestampfixed)
         row_arrayt.append(dicts['value'])
         outputWriter_1.writerow(row_arrayt)
+    outputFile_1.close()
     
     outputFile_2 = open("windspeed_mean__sim.csv","w",newline='')
     outputWriter_2 = csv.writer(outputFile_2)
@@ -46,6 +47,7 @@ else :
         row_arrayw.append(timestampfixed)
         row_arrayw.append(dicts['value'])
         outputWriter_2.writerow(row_arrayw)
+    outputFile_2.close()
 
 
 # linear interpolation
