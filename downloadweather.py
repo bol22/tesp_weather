@@ -10,7 +10,9 @@ Created on Thu May 31 18:06:01 2018
 
 @author: liuboming
 """
-# Scipy need to be install
+# Hourly waeather data is avaliable from NOAA only for the year of 2010 (temperture windspeed pressure)
+# If multiple years of weather data is required for a growth model, this may not be a appropriate source
+# Scipy need to be install          desired data type: temperature,humidity,solar_direct,solar_diffuse,pressure,wind_speed
 import pandas as pd
 import csv, requests
 from datetime import datetime
