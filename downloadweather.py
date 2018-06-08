@@ -4,12 +4,7 @@ Created on Fri Jun  1 09:46:58 2018
 
 @author: liub725
 """
-# -*- coding: utf-8 -*-
-"""
-Created on Thu May 31 18:06:01 2018
 
-@author: liuboming
-"""
 # Hourly waeather data is avaliable from NOAA only for the year of 2010 (temperture windspeed pressure)
 # If multiple years of weather data is required for a growth model, this may not be a appropriate source
 # Scipy need to be install          desired data type: temperature,humidity,solar_direct,solar_diffuse,pressure,wind_speed
@@ -45,10 +40,10 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
         print('no data avaliable for one of the url')
     else:
                
-        outputFile_1 = open("temperature.csv","w",newline='')
-        outputWriter_1 = csv.writer(outputFile_1)
+        f_1 = open("temperature.csv","w",newline='')
+        w_1 = csv.writer(f_1)
         keys=['time','value'] 
-        outputWriter_1.writerow(keys)
+        w_1.writerow(keys)
         for dicts in data1['results']:
             row_arrayt=[]
             #remove the 'T' between date and time
@@ -56,13 +51,13 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
             timestampfixed=timestamp.replace("T", " ")
             row_arrayt.append(timestampfixed)
             row_arrayt.append(float(dicts['value'])/10) #the temperature (F) value need to be divided by ten
-            outputWriter_1.writerow(row_arrayt)       
-        outputFile_1.close()
+            w_1.writerow(row_arrayt)       
+        f_1.close()
              
-        outputFile_2 = open("windspeed.csv","w",newline='')
-        outputWriter_2 = csv.writer(outputFile_2)
+        f_2 = open("windspeed.csv","w",newline='')
+        w_2 = csv.writer(f_2)
         keys=['time','value'] 
-        outputWriter_2.writerow(keys)
+        w_2.writerow(keys)
         for dicts in data2['results']:
             row_arrayw=[]
             #remove the 'T' between date and time
@@ -70,13 +65,13 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
             timestampfixed=timestamp.replace("T", " ")
             row_arrayw.append(timestampfixed)
             row_arrayw.append(float(dicts['value'])/10)
-            outputWriter_2.writerow(row_arrayw)   
-        outputFile_2.close()
+            w_2.writerow(row_arrayw)   
+        f_2.close()
         
-        outputFile_3 = open("pressure.csv","w",newline='')
-        outputWriter_3 = csv.writer(outputFile_3)
+        f_3 = open("pressure.csv","w",newline='')
+        w_3 = csv.writer(f_3)
         keys=['time','value'] 
-        outputWriter_3.writerow(keys)
+        w_3.writerow(keys)
         for dicts in data3['results']:
             row_arrayp=[]
             #remove the 'T' between date and time
@@ -84,8 +79,8 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
             timestampfixed=timestamp.replace("T", " ")
             row_arrayp.append(timestampfixed)
             row_arrayp.append(float(dicts['value'])*10)
-            outputWriter_3.writerow(row_arrayp)   
-        outputFile_3.close()
+            w_3.writerow(row_arrayp)   
+        f_3.close()
     # linear interpolation
   
     with open("temperature.csv") as f1:
@@ -123,16 +118,16 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
              pressure.append(row[1])     
     f3.close()
    
-    # Creat a timeseries data      
+    #Creat a timeseries data      
     dti=pd.to_datetime(timestamp)
     ts1 = pd.Series(temperature, index=dti)
     ts2 = pd.Series(windspeed, index=dti)
     ts3 = pd.Series(pressure, index=dti)
-    # upsample to every 5 minutes
+    #upsample to every 5 minutes
     s1=ts1.resample('300s').interpolate()
     s2=ts2.resample('300s').interpolate()
     s3=ts3.resample('300s').interpolate()
-    # won't work without transfering to float
+    #transfering to float
     s1=s1.astype(float)
     s2=s2.astype(float)
     s3=s3.astype(float)
