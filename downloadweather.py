@@ -55,7 +55,7 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
             timestamp=dicts['date']
             timestampfixed=timestamp.replace("T", " ")
             row_arrayt.append(timestampfixed)
-            row_arrayt.append(float(dicts['value'])/10)
+            row_arrayt.append(float(dicts['value'])/10) #the temperature (F) value need to be divided by ten
             outputWriter_1.writerow(row_arrayt)       
         outputFile_1.close()
              
@@ -108,9 +108,7 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
          for row in reader_2:
              #skip frist row
              if reader_2.line_num == 1:
-                 continue
-             #read the timestamp after transfer the data type
-             #timestamp.append(datetime.strptime(row[0],"%Y-%m-%d %H:%M:%S"))
+                 continue             
              windspeed.append(row[1])     
     f2.close()
     
@@ -121,9 +119,7 @@ def downloadweather_NOAA(stationid, startdate, enddate, outputFilename):
          for row in reader_3:
              #skip frist row
              if reader_3.line_num == 1:
-                 continue
-             #read the timestamp after transfer the data type
-             #timestamp.append(datetime.strptime(row[0],"%Y-%m-%d %H:%M:%S"))
+                 continue             
              pressure.append(row[1])     
     f3.close()
    
